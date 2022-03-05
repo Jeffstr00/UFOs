@@ -2,7 +2,7 @@
 const tableData = data;
 
 // get table references
-var tbody = d3.select("tbody");
+const tbody = d3.select("tbody");
 
 function buildTable(data) {
   // First, clear out any existing data
@@ -24,7 +24,7 @@ function buildTable(data) {
 }
 
 // 1. Create a variable to keep track of all the filters as an object.
-var filters = {};
+const filters = {};
 
 // 3. Use this function to update the filters. 
 function updateFilters() {
