@@ -17,6 +17,9 @@ We initially loaded the data into a table so that it would be easy to read and g
 
 
 ## Results
+
+### Refactoring the webpage to include multiple filters
+
 While the initial version had an input box and button the user would click when they wanted to filter by date, we updated it to have five filter boxes instead.  Since we no longer have one filter button, we now "listen" to changes in these boxes by using `d3.selectAll("input").on("change", updateFilters);`, which then loads our updateFilters function.  We use D3 to read in what element was changed using `let changedElement = d3.select(this);` and ultimately update our filter variable before calling our filterTable function.  We then take the data from the original tableData and loop through the different filters until we are left with data which fits them all.  To accomplish this, we used the following code: ```    let filteredData = tableData.filter((obj) => {
       for(filterId in filters) {
         if(obj[filterId] !== filters[filterId]) {
@@ -26,6 +29,8 @@ While the initial version had an input box and button the user would click when 
       return true;
     });```
 Once this was finished, we could rebuild our table by once again calling our buildTable function, but this time passing it our new filteredData: `buildTable(filteredData);`.
+
+### Using the webpage
 
 The webpage should be fairly straight-forward and easy to use, either for Dana or even the most inexperienced users.  To sort through the different sightings, simply enter information in the appropriate input box, taking care to ensure that the entered text matches some of the data in the given field.  The user can either press 'enter' to filter the data immediately, or they can move on to another field to filter it further (in which case it will be done automatically).
 
@@ -39,5 +44,8 @@ then
 ![Florida 1/1/2010 search](https://github.com/Jeffstr00/UFOs/blob/main/static/images/page3.png)
 
 
-## Summary
-In a summary statement, describe one drawback of this new design and two recommendations for further development.
+## Summary/Improvements
+
+While Dana is thrilled with the ability to easily search through the entire list of UFO sightings, the page isn't without its flaws.  Once major downside is the fact that the filters are limited to one option each.  To furher improve the webpage, instead of just being able to search for a single date, it would be preferable to have a start date and an end date (this would be particularly useful if even more data was added to the file instead of just ten days' worth).  If a UFO appears, it's not like it can be seen in just one place, so you might want to be able to include multiple locations.  That way, for instance, you could look for all results in New Jersey, Pennsylvania, or other neighboring states to see if one instance had more than one sighting.  Finally, you'd want to be able to search for multiple shapes at the same time, especially when the responses are open-ended.  After all, what one person classifies as a "circle" might be a "globe" to someone else, or even a "disk" or an "oval".
+
+Another potential fault is the fact that the input boxes are open-ended.  This could cause some data to be missed if the information doesn't exactly match what the user is looking for.  For instance, someone looking for a sighting in London, Ontario, Canada might not be able to find the information they are looking for because they search for "london" while the entry is under "london (canada)".  The text has to match exactly, but you wouldn't know to search for precisely "london (canada)" unless you have already scrolled through the data...which defeats the purpose of the filtering in the first place.  As a result, it might be better to switch the open-ended search boxes over to dropdown boxes which provide all of the available options.  
