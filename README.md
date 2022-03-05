@@ -20,14 +20,16 @@ We initially loaded the data into a table so that it would be easy to read and g
 
 ### Refactoring the webpage to include multiple filters
 
-While the initial version had an input box and button the user would click when they wanted to filter by date, we updated it to have five filter boxes instead.  Since we no longer have one filter button, we now "listen" to changes in these boxes by using `d3.selectAll("input").on("change", updateFilters);`, which then loads our updateFilters function.  We use D3 to read in what element was changed using `let changedElement = d3.select(this);` and ultimately update our filter variable before calling our filterTable function.  We then take the data from the original tableData and loop through the different filters until we are left with data which fits them all.  To accomplish this, we used the following code: ```    let filteredData = tableData.filter((obj) => {
-      for(filterId in filters) {
+While the initial version had an input box and button the user would click when they wanted to filter by date, we updated it to have five filter boxes instead.  Since we no longer have one filter button, we now "listen" to changes in these boxes by using `d3.selectAll("input").on("change", updateFilters);`, which then loads our updateFilters function.  We use D3 to read in what element was changed using `let changedElement = d3.select(this);` and ultimately update our filter variable before calling our filterTable function.  We then take the data from the original tableData and loop through the different filters until we are left with data which fits them all.  To accomplish this, we used the following code: ```
+let filteredData = tableData.filter((obj) => {
+    for(filterId in filters) {
         if(obj[filterId] !== filters[filterId]) {
-          return false;
+            return false;
         }
-      }
-      return true;
-    });```
+    }
+    return true;
+});
+```
 Once this was finished, we could rebuild our table by once again calling our buildTable function, but this time passing it our new filteredData: `buildTable(filteredData);`.
 
 ### Using the webpage
