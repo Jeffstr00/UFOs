@@ -8,8 +8,8 @@ Dana is a data journalist who has been interested in UFOs since she was a young 
 
 To go along with her story, Dana wants to create a webpage to allow people to read up on various UFO sightings.  She is currently equipped with a javascript file containing information on over one hundred different sightings.  While this features a lot of information, it isn't exactly user-friendly.  She wants to display this data on a webpage so that it is not only easy to read, but easy to sort through as well.
 
-![JavaScript data file](https://github.com/Jeffstr00/UFOs/blob/main/Resources/data.png)
-![Original Webpage w/ Date Filter](https://github.com/Jeffstr00/UFOs/blob/main/Resources/page1.png)
+![JavaScript data file](https://github.com/Jeffstr00/UFOs/blob/main/static/images/data.png)
+![Original Webpage w/ Date Filter](https://github.com/Jeffstr00/UFOs/blob/main/static/images/page1.png)
 
 We initially loaded the data into a table so that it would be easy to read and gave the user the ability to sort via date.  While this was a good start, Dana wanted to provide even more flexibility by adding the ability to also sort by city, state, country, and shape of the sighted UFO.
 
